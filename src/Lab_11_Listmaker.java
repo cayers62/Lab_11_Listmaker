@@ -25,15 +25,15 @@ public class Lab_11_Listmaker
                 //adds to the list
                 case "A":
 
-                    data = SafeInput.getNonZeroLengthString(pipe, "Enter information here: ");
-                    list.add(data);  // Always adds an item to the list
+                    list.add(SafeInput.getNonZeroLengthString(pipe, "Enter information here" ));
+                    list.add(0,data);  // Always adds an item to the list
                     break;
 
                 //removes items from the list
                 case "D":
                     if(list.size() > 0)
                     {
-                        int indexToDelete = SafeInput.getRangedInt(pipe, "Enter number", 0, list.size() - 1);
+                        int indexToDelete = SafeInput.getRangedInt(pipe, "Enter number" , 0, list.size() - 1);
                         list.remove(indexToDelete);
                     }
                     else
