@@ -11,22 +11,29 @@ public class Lab_11_Listmaker
         String data = "";
         int count = 12;
 
+        displayList();
+        //Get the user input for the option
+        //Display the menu/options
+
         do {
-            displayList();
-            //Get the user input for the option
-            //Display the menu/options
 
             opt = SafeInput.getRegExString(pipe, menu, "[AaDdPpQq]" );
             opt = opt.toUpperCase();
 
             //Runs options
 
-            switch (opt) {
+            switch (opt)
+            {
+
                 //adds to the list
                 case "A":
-
+                    list.add(0,"Curtis Ayers");
+                    list.add(1,"Amber Vinson");
+                    list.add(2,"Pam Wheeler");
+                    list.add(3,"Kelsey Dewitt");
+                    list.add(4,"David Rohe");
                     list.add(SafeInput.getNonZeroLengthString(pipe, "Enter information here" ));
-                    list.add(0,data);  // Always adds an item to the list
+                    list.add(data);  // Always adds an item to the list
                     break;
 
                 //removes items from the list
