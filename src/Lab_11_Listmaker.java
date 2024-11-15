@@ -9,9 +9,15 @@ public class Lab_11_Listmaker
         boolean done = false;
         String opt = "";
         String data = "";
-        int count = 12;
 
+        //initialize the list
+        initializeList();
+
+
+        //displays the list
         displayList();
+
+
         //Get the user input for the option
         //Display the menu/options
 
@@ -27,21 +33,19 @@ public class Lab_11_Listmaker
 
                 //adds to the list
                 case "A":
-                    list.add(0,"Curtis Ayers");
-                    list.add(1,"Amber Vinson");
-                    list.add(2,"Pam Wheeler");
-                    list.add(3,"Kelsey Dewitt");
-                    list.add(4,"David Rohe");
-                    list.add(SafeInput.getNonZeroLengthString(pipe, "Enter information here" ));
-                    list.add(data);  // Always adds an item to the list
+
+                    data = SafeInput.getNonZeroLengthString(pipe, "Enter information here" );
+                    list.add(data);
+                    displayList();
                     break;
 
                 //removes items from the list
                 case "D":
                     if(list.size() > 0)
                     {
-                        int indexToDelete = SafeInput.getRangedInt(pipe, "Enter number" , 0, list.size() - 1);
+                        int indexToDelete = SafeInput.getRangedInt(pipe, "Enter number you wish to be deleted",1, list.size() - 1);
                         list.remove(indexToDelete);
+                        System.out.println("Item deleted successfully.");
                     }
                     else
                     {
@@ -50,23 +54,17 @@ public class Lab_11_Listmaker
                     break;
                 //Prints the list
                 case "P":
-                    if (list.size() > 0) {
-                        System.out.println("-------------------------------------------------------------------------------------");
-                        for (int i = 0; i < list.size(); i++) {
-                            System.out.printf("%3d%40s\n", i + 1, list.get(i));
-
-                        }
-                    } else {
-                        System.out.println("---                               List is currently empty                         ---");
-                        System.out.println("-------------------------------------------------------------------------------------");
-                        break;
-                    }
+                   displayList();
+                   break;
                     //Quits the program
                 case "Q":
-                    System.exit(0);
+                    done = true;
                     break;
             }
-            System.out.println("Your option is " + opt);
+            if(!done)
+            {
+                System.out.println("Your option is " + opt);
+            }
         } while (!done);
     }
 
@@ -78,11 +76,22 @@ public class Lab_11_Listmaker
         {
             for (int i = 0; i < list.size(); i++)
             {
-                System.out.printf("%3d%40s", i + 1, list.get(i));
+                System.out.printf("\n%3d%40s", i + 1, list.get(i));
+
             }
+            System.out.println();
         }
         else
             System.out.println("---                               List is currently empty                         ---");
         System.out.println("-------------------------------------------------------------------------------------");
+    }
+    // Initialize the list with default values
+    private static void initializeList() {
+        list.add("Curtis Ayers");
+        list.add("Amber Vinson");
+        list.add("Pam Wheeler");
+        list.add("Kelsey Dewitt");
+        list.add("David Rohe");
+
     }
 }
